@@ -693,7 +693,7 @@ let run com main full =
 		| cfl ->
 			dce.added_fields <- [];
 			(* extend to dependent (= overriding/implementing) class fields *)
-			List.iter (fun (c,cf,stat) -> mark_dependent_fields_opt dce c cf.cf_name stat) cfl;
+			List.iter (fun (c,cf,stat) -> mark_dependent_fields dce c cf.cf_name stat) cfl;
 			(* mark fields as used *)
 			List.iter (fun (c,cf,stat) ->
 				if not (is_extern_field cf) then mark_class dce c;
